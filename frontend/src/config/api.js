@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "https://personalexpensetracker-backend.onrender.com";
 
 export const API_URLS = {
   login: `${BASE_URL}/login`,

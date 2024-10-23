@@ -170,10 +170,13 @@ router.get("/summary", authenticateJWT, (req, res) => {
       const totalExpense = expenseRow.total_expense || 0;
       const balance = totalIncome - totalExpense;
 
-      // Ensure consistent naming in response
+      console.log(
+        `Total Income: ${totalIncome}, Total Expenses: ${totalExpense}, Balance: ${balance}`
+      );
+
       res.json({
-        totalIncome, // Updated to match frontend expectations
-        totalExpenses: totalExpense, // Updated to match frontend expectations
+        totalIncome,
+        totalExpenses: totalExpense,
         balance,
       });
     });

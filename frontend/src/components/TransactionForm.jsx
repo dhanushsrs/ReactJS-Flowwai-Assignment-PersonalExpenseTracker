@@ -9,7 +9,11 @@ import {
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
-  const [summary, setSummary] = useState({});
+  const [summary, setSummary] = useState({
+    totalIncome: 0,
+    totalExpenses: 0,
+    balance: 0,
+  });
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState(0);
@@ -45,6 +49,17 @@ const Transactions = () => {
     fetchSummary();
   }, []);
 
+  // Refresh summary after transaction updates
+  const refreshSummary = async () => {
+    try {
+      const data = await getSummary();
+      setSummary(data);
+    } catch (error) {
+      setErrorMessage("Error refreshing summary.");
+      console.error("Error refreshing summary:", error);
+    }
+  };
+
   // Add or update transaction
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,9 +85,10 @@ const Transactions = () => {
       // Reset form fields
       resetForm();
 
-      // Refresh the transactions list
+      // Refresh the transactions list and summary
       const data = await getTransactions();
       setTransactions(data);
+      await refreshSummary(); // Update summary after adding/updating
     } catch (error) {
       setErrorMessage(error.response?.data?.error || "An error occurred");
       setSuccessMessage("");
@@ -88,6 +104,7 @@ const Transactions = () => {
         transactions.filter((transaction) => transaction.id !== id)
       );
       setSuccessMessage("Transaction deleted successfully!");
+      await refreshSummary(); // Update summary after deletion
     } catch (error) {
       setErrorMessage("Error deleting transaction.");
       console.error("Error deleting transaction:", error);

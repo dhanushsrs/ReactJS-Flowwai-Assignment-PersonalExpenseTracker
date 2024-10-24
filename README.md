@@ -111,7 +111,9 @@ A personal expense tracker built with React for the frontend, Node.js and Expres
 
 **Summary**
 1. GET /summary
+   
    Description: Retrieves a summary of transactions (total income, total expenses, balance).
+   
    Response:
     {
       "totalIncome": 500.00,

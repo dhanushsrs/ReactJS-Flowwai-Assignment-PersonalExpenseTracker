@@ -50,6 +50,7 @@ A personal expense tracker built with React for the frontend, Node.js and Expres
    1. POST /transactions
       
       Description: Adds a new transaction (income or expense).
+      
       Request Body:
         {
           "title": "Transaction Title",
@@ -59,9 +60,10 @@ A personal expense tracker built with React for the frontend, Node.js and Expres
           "date": "2024-10-01"
         }
 
-  3. GET /transactions
+  2. GET /transactions
      
      Description: Retrieves all transactions.
+     
      Response:
         [
           {
@@ -74,9 +76,10 @@ A personal expense tracker built with React for the frontend, Node.js and Expres
           }
         ]
 
-  4. GET /transactions/
+  3. GET /transactions/
      
      Description: Retrieves a transaction by ID.
+     
      Response:
       {
         "id": 1,
@@ -87,9 +90,10 @@ A personal expense tracker built with React for the frontend, Node.js and Expres
         "date": "2024-10-01"
       }
 
- 5. PUT /transactions/
+ 4. PUT /transactions/
     
     Description: Updates a transaction by ID.
+    
     Request Body:
       {
         "title": "Updated Title",
@@ -99,9 +103,10 @@ A personal expense tracker built with React for the frontend, Node.js and Expres
         "date": "2024-10-02"
       }
 
-6. DELETE /transactions/
+5. DELETE /transactions/
 
     Description: Deletes a transaction by ID.
+   
     Response: 204 No Content on successful deletion.
 
 **Summary**
